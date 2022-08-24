@@ -1947,12 +1947,13 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
       <h1><span>Track Your Order</span></h1>
       <div class="field"><label for="tracktorOrderName"><span>Order Number</span></label><input required="" aria-required="true" id="tracktorOrderName" type="text" name="order"></div>
       <div class="field"><label for="tracktorOrderEmail"><span>Email</span></label><input required="" aria-required="true" id="tracktorOrderEmail" type="text" name="userEmail"></div>
-      <div class="captcha-wrap" style="display: block;"></div>
+      <br style="clear:both">
+      <div class="captcha-wrap" style="display: none;justify-content: center;"></div>
       <button id="tracktorTrack" class="button-enter btn styled-submit button"><span>Track</span></button>
   </div>
   <section id="tracktorResponseContainer"></section>
 </form>
-  <br style="clear:both">
+
 </div>
 <script src="https://www.google.com/recaptcha/api.js?onload=spOnLoadCallback&render=explicit" async="" defer=""></script>
 <script type="text/javascript">
@@ -1973,6 +1974,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                    type: "GET",
                    url: testUrl,
                     beforeSend:function(){
+                      $("#captcha-wrap").css({"display":"none"});
                       $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive"> <span id="tracktorLoader" class="tracktorLoader"><span id="tracktorLoader1"><span>Tracking Packages</span></span></span></section>');
                     },
                    success: function(data){
@@ -1984,6 +1986,8 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                     error:function(data){
                       /** 错误多访问几次出现error: {message: "captcha_show", code: 405}，https://developers.google.com/recaptcha/docs/v3,无法处理 **/
                       if(data.responseJSON.error.message=='captcha_show'){
+                        $("#tracktorResponseContainer").html("");
+                        $("#captcha-wrap").css({"display":"flex"});
                          grecaptcha.render(document.querySelector(".captcha-wrap"), {
                           'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP'
                         });
