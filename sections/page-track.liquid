@@ -1967,9 +1967,9 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                 var email = $("#tracktorOrderEmail").val(); 
                 if(order!=='' && email!==''){
                   console.log('提交');
-                  var testUrl = "/apps/tracktor/order.json?order="+encodeURIComponent(order)+"&email="+email+"&uuid=solado-official&time="+new Date().getTime();
+                  var testUrl = "/apps/tracktor/order.json?order="+encodeURIComponent(order)+"&email="+email+"&uuid=solado-official;
                   if(recaptcha_token){
-                    testUrl +=recaptcha_token;
+                    testUrl +="&recaptcha_token="recaptcha_token;
                   }
                   $.ajax({
                    type: "GET",
