@@ -58,7 +58,7 @@
               console.log('提交1');
                 if(order!=='' && email!==''){
                   console.log('提交');
-                  var testUrl = "/apps/tracktor/order.json?order="+encodeURIComponent(order)+"&email="+email+"&uuid=solado-official&time="+new Date().getTimeout();
+                  var testUrl = "/apps/tracktor/order.json?order="+encodeURIComponent(order)+"&email="+email+"&uuid=solado-official&time="+new Date().getTime();
                   $.ajax({
                    type: "GET",
                    url: testUrl,
