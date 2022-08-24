@@ -1991,7 +1991,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                         $("#tracktorResponseContainer").html("");
                         $(".captcha-wrap").css({"display":"flex"});
                        
-                          if(self.widgetId2){
+                          if(self.widgetId2 || self.widgetId2 ===0){
                             grecaptcha.reset(self.widgetId2)
                           }else{
                              try{
