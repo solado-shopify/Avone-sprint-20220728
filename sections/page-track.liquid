@@ -1971,6 +1971,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                   var shopCurrency =  '{{shop.currency}}';
                   var isUsStore = shopCurrency === 'USD';
                   var uuid = isUsStore?'solado-official':'solado-eu';
+                  var sitekey = isUsStore?'6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP':'6LcCR2cUAAAAANS1Gpq_mDIJ2pQuJphsSQaUEuc9'; /** 这个页面抓取的，不知道欧元店是否正确 **/
                   var testUrl = "/apps/tracktor/order.json?order="+encodeURIComponent(order)+"&email="+email+"&uuid="+uuid;
                   if(recaptcha_token){
                     testUrl =testUrl +("&recaptcha_token="+recaptcha_token);
@@ -1999,7 +2000,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                           }else{
                              try{
                                self.pageTrackWidgetId = grecaptcha.render(document.querySelector(".captcha-wrap"), {
-                              'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP',
+                              'sitekey' : sitekey,
                               'callback' : function(){
                                 var token = grecaptcha.getResponse(self.pageTrackWidgetId);
                                 verifyNumberOrEmail(token);
