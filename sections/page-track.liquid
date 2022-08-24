@@ -1957,8 +1957,10 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
       event.preventDefault();
    }
          window.addEventListener('DOMContentLoaded',function(){
+           $("#tracktorContainer").submit(function(event){
+      event.preventDefault();
+   });
             var $btn =  $("#tracktorTrack");
-             console.log('提交2');
             $btn.on("click",function(){
                 var order = $("#tracktorOrderName").val(); 
                 var email = $("#tracktorOrderEmail").val(); 
