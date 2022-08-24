@@ -1992,7 +1992,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                         $(".captcha-wrap").css({"display":"flex"});
                         try{
                           if(self.widgetId2){
-                            grecaptcha.reset(self.widgetId2)
+                            grecaptcha.getResponse(self.widgetId2)
                           }else{
                                var self.widgetId2 = grecaptcha.render(document.querySelector(".captcha-wrap"), {
                               'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP',
