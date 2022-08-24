@@ -1942,7 +1942,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
 
 </style>
 <div id="tracktor" class="themeLight __web-inspector-hide-shortcut__" data-theme="Light" data-progress-bar-color="#E1B9EB">
-<form id="tracktorContainer">
+<form id="tracktorContainer" onsubmit="myFunction()">
   <div id="tracktorOrderForm">
       <h1><span>Track Your Order</span></h1>
       <div class="field"><label for="tracktorOrderName"><span>Order Number</span></label><input required="" aria-required="true" id="tracktorOrderName" type="text" name="order"></div>
@@ -1953,6 +1953,9 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
 </form>
 </div>
 <script type="text/javascript">
+   function myFunction(event){
+      event.preventDefault();
+   }
          window.addEventListener('DOMContentLoaded',function(){
             var $btn =  $("#tracktorTrack");
              console.log('提交2');
