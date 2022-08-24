@@ -1991,7 +1991,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                          grecaptcha.render(document.querySelector(".captcha-wrap"), {
                           'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP',
                           'callback' : function(){
-                            $.ajax(this);
+                            $btn.trigger("click");
                           },
                         });
                       }else{
