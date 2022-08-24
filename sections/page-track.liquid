@@ -1981,7 +1981,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                     error:function(data){
                       /** 错误多访问几次出现error: {message: "captcha_show", code: 405}，https://developers.google.com/recaptcha/docs/v3,无法处理 **/
                       if(data.responseJSON.error.message=='captcha_show'){
-                         grecaptcha.render(document.getElementById('example2'), {
+                         grecaptcha.render(document.querySelector(".captcha-wrap"), {
                           'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP'
                         });
                       }else{
