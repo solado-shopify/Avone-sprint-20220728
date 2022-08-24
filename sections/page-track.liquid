@@ -46,7 +46,7 @@
       <div class="field"><label for="tracktorOrderEmail"><span>Email</span></label><input required="" aria-required="true" id="tracktorOrderEmail" type="text" name="userEmail"></div>
       <button id="tracktorTrack" class="button-enter btn styled-submit button"><span>Track</span></button>
   </form>
-  <section id="tracktorResponseContainer" style="display:none;"><section id="tracktorOrderDetails" class="header-inactive"><h1>Could not find order</h1></section></section>
+  <section id="tracktorResponseContainer"><section id="tracktorOrderDetails" class="header-inactive" style="display:none;"><h1>Could not find order</h1></section></section>
 </div>
 <script type="text/javascript">
          window.addEventListener('DOMContentLoaded',function(){
@@ -59,13 +59,14 @@
                   var testUrl = "/apps/tracktor/order.json?order="+order+"&email="+email+"&uuid=solado-official";
                   $.get(testUrl, function(data){
                       if(data.status===200){
-                          $("#tracktorResponseContainer").hide({'display':'none'});
+                          $("#tracktorOrderDetails").hide({'display':'none'});
                           var orderEncode = encodeURIComponent(order);
                           var emailEncode = encodeURIComponent(email.replace('@','_-_').split('').reverse().join(''));
                           var jumpUrl = "/apps/tracktor/track?order="+orderEncode+"&token="+emailEncode;
                           location.href =jumpUrl;
                       }else{
-                          $("#tracktorResponseContainer").css({'display':'flex'});
+                        $("#tracktorOrderDetails h1").text(data.error.message);
+                          $("#tracktorOrderDetails").css({'display':'flex'});
                       }
                   });
                 }
