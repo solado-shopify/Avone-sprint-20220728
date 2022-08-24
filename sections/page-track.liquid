@@ -1970,7 +1970,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                 if(order!=='' && email!==''){
                   console.log('提交');
                   var testUrl = "/apps/tracktor/order.json?order="+encodeURIComponent(order)+"&email="+email+"&uuid=solado-official&time="+new Date().getTime();
-                  $.ajax({
+                  var verifyNumber = $.ajax({
                    type: "GET",
                    url: testUrl,
                     beforeSend:function(){
@@ -1989,7 +1989,10 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                         $("#tracktorResponseContainer").html("");
                         $(".captcha-wrap").css({"display":"flex"});
                          grecaptcha.render(document.querySelector(".captcha-wrap"), {
-                          'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP'
+                          'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP',
+                          'callback' : function(){
+                            $.ajax(this);
+                          },
                         });
                       }else{
                         $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive"> <h1>'+data.responseJSON.error.message+'</h1></section>');
