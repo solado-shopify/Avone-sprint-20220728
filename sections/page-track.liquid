@@ -72,6 +72,7 @@
                           location.href =jumpUrl;
                    },
                     error:function(data){
+                      /** 错误多访问几次出现error: {message: "captcha_show", code: 405}，https://developers.google.com/recaptcha/docs/v3,无法处理 **/
                       $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive"> <h1>'+data.responseJSON.error.message+'</h1></section>');
                     }
                   });
