@@ -1989,6 +1989,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                       if(data.responseJSON.error.message=='captcha_show'){
                         $("#tracktorResponseContainer").html("");
                         $(".captcha-wrap").css({"display":"flex"});
+                        try{
                          var widgetId2 = grecaptcha.render(document.querySelector(".captcha-wrap"), {
                           'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP',
                           'callback' : function(){
@@ -1996,6 +1997,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                             verifyNumberOrEmail(token);
                           },
                         });
+                        catch(error){}
                       }else{
                         $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive"> <h1>'+data.responseJSON.error.message+'</h1></section>');
                       }
