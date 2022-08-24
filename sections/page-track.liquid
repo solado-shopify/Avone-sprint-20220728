@@ -71,8 +71,8 @@
                           var jumpUrl = "/apps/tracktor/track?order="+orderEncode+"&token="+emailEncode;
                           location.href =jumpUrl;
                    },
-                    error:function(error){
-                      $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive"> <h1>order number or email is wrong</h1></section>');
+                    error:function(data){
+                      $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive"> <h1>'+data.responseJSON.error.message+'</h1></section>');
                     }
                   });
                 }
