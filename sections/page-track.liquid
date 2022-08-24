@@ -1967,7 +1967,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                 var order = $("#tracktorOrderName").val(); 
                 var email = $("#tracktorOrderEmail").val(); 
                 if(order!=='' && email!==''){
-                  console.log('提交');
+                  console.log('提交一次');
                   var testUrl = "/apps/tracktor/order.json?order="+encodeURIComponent(order)+"&email="+email+"&uuid=solado-official";
                   if(recaptcha_token){
                     testUrl =testUrl +("&recaptcha_token="+recaptcha_token);
