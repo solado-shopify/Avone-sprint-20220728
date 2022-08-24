@@ -1988,9 +1988,10 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                       if(data.responseJSON.error.message=='captcha_show'){
                         $("#tracktorResponseContainer").html("");
                         $(".captcha-wrap").css({"display":"flex"});
-                         grecaptcha.render(document.querySelector(".captcha-wrap"), {
+                         var widgetId2 = grecaptcha.render(document.querySelector(".captcha-wrap"), {
                           'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP',
                           'callback' : function(){
+                            grecaptcha.reset(widgetId2);
                             $btn.trigger("click");
                           },
                         });
