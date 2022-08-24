@@ -26,6 +26,17 @@
     min-width: 250px;
     max-width: 450px;
   }
+  #tracktor.themeLight #tracktorOrderDetails, #tracktor.themeLight .tracktorFulfillmentCol2 label {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  #tracktorOrderDetails {
+    position: relative;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 20px;
+    text-align: center;
+    margin-top: 40px;
+  }
 </style>
 
 <div id="tracktorContainer">
@@ -35,7 +46,7 @@
       <div class="field"><label for="tracktorOrderEmail"><span>Email</span></label><input required="" aria-required="true" id="tracktorOrderEmail" type="text" name="userEmail"></div>
       <button id="tracktorTrack" class="button-enter btn styled-submit button"><span>Track</span></button>
   </form>
-  <section id="tracktorResponseContainer" class=""><section id="tracktorOrderDetails" class="header-inactive"><h1>Could not find order</h1></section></section>
+  <section id="tracktorResponseContainer" style="display:none;"><section id="tracktorOrderDetails" class="header-inactive"><h1>Could not find order</h1></section></section>
 </div>
 <script type="text/javascript">
          window.addEventListener('DOMContentLoaded',function(){
@@ -48,13 +59,13 @@
                   var testUrl = "/apps/tracktor/order.json?order="+order+"&email="+email+"&uuid=solado-official";
                   $.get(testUrl, function(data){
                       if(data.status===200){
-                          $("#tracktorResponseContainer").hide();
+                          $("#tracktorResponseContainer").hide({'display':'none'});
                           var orderEncode = encodeURIComponent(order);
                           var emailEncode = encodeURIComponent(email.replace('@','_-_').split('').reverse().join(''));
                           var jumpUrl = "/apps/tracktor/track?order="+orderEncode+"&token="+emailEncode;
                           location.href =jumpUrl;
                       }else{
-                          $("#tracktorResponseContainer").show();
+                          $("#tracktorResponseContainer").css({'display':'flex'});
                       }
                   });
                 }
