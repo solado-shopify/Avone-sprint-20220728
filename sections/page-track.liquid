@@ -1998,7 +1998,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                             verifyNumberOrEmail(token);
                           },
                         });
-                        catch(error){}
+                        }catch(error){}
                       }else{
                         $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive"> <h1>'+data.responseJSON.error.message+'</h1></section>');
                       }
