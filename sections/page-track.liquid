@@ -1,13 +1,48 @@
-<div id="tracktorContainer">
-    <form id="tracktorOrderForm">
-        <h1><span>Track Your Order</span></h1>
-        <div class="field"><label for="tracktorOrderName"><span>Order Number</span></label><input required="" aria-required="true" id="tracktorOrderName" type="text" name="order"></div>
-        <div class="field"><label for="tracktorOrderEmail"><span>Email</span></label><input required="" aria-required="true" id="tracktorOrderEmail" type="text" name="userEmail"></div>
-        <button id="tracktorTrack" class="button-enter btn styled-submit button"><span>Track</span></button>
-    </form>
-    <section id="tracktorResponseContainer" class=""><section id="tracktorOrderDetails" class="header-inactive"><h1>Could not find order</h1></section></section>
-    </div>
+<style>
+  #tracktorContainer {
+      margin: 0 auto;
+      width: 100%;
+      max-width:1200px
+  }
+  #tracktorOrderForm {
+      text-align: center;
+  }
 
+</style>
+
+<div id="tracktorContainer">
+  <form id="tracktorOrderForm">
+      <h1><span>Track Your Order</span></h1>
+      <div class="field"><label for="tracktorOrderName"><span>Order Number</span></label><input required="" aria-required="true" id="tracktorOrderName" type="text" name="order"></div>
+      <div class="field"><label for="tracktorOrderEmail"><span>Email</span></label><input required="" aria-required="true" id="tracktorOrderEmail" type="text" name="userEmail"></div>
+      <button id="tracktorTrack" class="button-enter btn styled-submit button"><span>Track</span></button>
+  </form>
+  <section id="tracktorResponseContainer" class=""><section id="tracktorOrderDetails" class="header-inactive"><h1>Could not find order</h1></section></section>
+</div>
+<script type="text/javascript">
+         window.addEventListener('DOMContentLoaded',function(){
+            var $btn =  $("tracktorTrack");
+            $btn.on("click",function(){
+                var order = $("#tracktorOrderName"); 
+                var email = $("#tracktorOrderEmail"); 
+                if(order!=='' && email!==''){
+                  console.log('提交');
+                  var testUrl = "/apps/tracktor/order.json?order="+order+"&email="+email+"&uuid=solado-official";
+                  $.get(testUrl, function(data){
+                      if(data.status===200){
+                          $("#tracktorResponseContainer").hide();
+                          var orderEncode = encodeURIComponent(order);
+                          var emailEncode = encodeURIComponent(email.replace('@','_-_').split('').reverse().join(''));
+                          var jumpUrl = "/apps/tracktor/track?order="+orderEncode+"&token="+emailEncode;
+                          location.href =jumpUrl;
+                      }else{
+                          $("#tracktorResponseContainer").show();
+                      }
+                  });
+                }
+            });
+        });
+    </script>
 {% schema %}
   {
     "name": "page-track",
