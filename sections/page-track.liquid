@@ -1974,7 +1974,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                    type: "GET",
                    url: testUrl,
                     beforeSend:function(){
-                      $("#captcha-wrap").css({"display":"none"});
+                      $(".captcha-wrap").css({"display":"none"});
                       $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive"> <span id="tracktorLoader" class="tracktorLoader"><span id="tracktorLoader1"><span>Tracking Packages</span></span></span></section>');
                     },
                    success: function(data){
@@ -1987,7 +1987,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                       /** 错误多访问几次出现error: {message: "captcha_show", code: 405}，https://developers.google.com/recaptcha/docs/v3,无法处理 **/
                       if(data.responseJSON.error.message=='captcha_show'){
                         $("#tracktorResponseContainer").html("");
-                        $("#captcha-wrap").css({"display":"flex"});
+                        $(".captcha-wrap").css({"display":"flex"});
                          grecaptcha.render(document.querySelector(".captcha-wrap"), {
                           'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP'
                         });
