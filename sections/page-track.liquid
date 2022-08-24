@@ -1946,7 +1946,8 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
   <div id="tracktorOrderForm">
       <h1><span>Track Your Order</span></h1>
       <div class="field"><label for="tracktorOrderName"><span>Order Number</span></label><input required="" aria-required="true" id="tracktorOrderName" type="text" name="order"></div>
-      <div class="field"><label for="tracktorOrderEmail"><span>Email</span></label><input required="" aria-required="true" id="tracktorOrderEmail" type="text" name="userEmail"></div>
+      <div class="field"><label for="tracktorOrderEmail"><span>Email</span></label><input required="" aria-required="true" id="tracktorOrderEmail" type="text" name="userEmail"></div
+     <div class="captcha-wrap" style="display: block;"></div>
       <button id="tracktorTrack" class="button-enter btn styled-submit button"><span>Track</span></button>
   </div>
   <section id="tracktorResponseContainer"></section>
@@ -1979,7 +1980,14 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                    },
                     error:function(data){
                       /** 错误多访问几次出现error: {message: "captcha_show", code: 405}，https://developers.google.com/recaptcha/docs/v3,无法处理 **/
-                      $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive"> <h1>'+data.responseJSON.error.message+'</h1></section>');
+                      if(data.responseJSON.error.message=='captcha_show'){
+                         grecaptcha.render(document.getElementById('example2'), {
+                          'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP'
+                        });
+                      }else{
+                        $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive"> <h1>'+data.responseJSON.error.message+'</h1></section>');
+                      }
+                      
                     }
                   });
                 }
