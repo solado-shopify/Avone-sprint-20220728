@@ -1960,15 +1960,18 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
   function spOnLoadCallback() {}
          window.addEventListener('DOMContentLoaded',function(){
            $("#tracktorContainer").submit(function(event){
-      event.preventDefault();
-   });
+            event.preventDefault();
+         });
            var self = this;
             var verifyNumberOrEmail = function(recaptcha_token){ 
                 var order = $("#tracktorOrderName").val(); 
                 var email = $("#tracktorOrderEmail").val(); 
                 if(order!=='' && email!==''){
                   console.log('提交一次');
-                  var testUrl = "/apps/tracktor/order.json?order="+encodeURIComponent(order)+"&email="+email+"&uuid=solado-official";
+                  var shopCurrency =  '{{shop.currency}}';
+                  var isUsStore = shopCurrency === 'USD';
+                  var uuid = isUsStore?'solado-official':'solado-eu';
+                  var testUrl = "/apps/tracktor/order.json?order="+encodeURIComponent(order)+"&email="+email+"&uuid="+uuid;
                   if(recaptcha_token){
                     testUrl =testUrl +("&recaptcha_token="+recaptcha_token);
                   }
@@ -1991,15 +1994,15 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                         $("#tracktorResponseContainer").html("");
                         $(".captcha-wrap").css({"display":"flex"});
                        
-                          if(self.widgetId2 || self.widgetId2 ===0){
-                            grecaptcha.reset(self.widgetId2)
+                          if(self.pageTrackWidgetId || self.pageTrackWidgetId ===0){
+                            grecaptcha.reset(self.pageTrackWidgetId)
                           }else{
                              try{
-                               self.widgetId2 = grecaptcha.render(document.querySelector(".captcha-wrap"), {
+                               self.pageTrackWidgetId = grecaptcha.render(document.querySelector(".captcha-wrap"), {
                               'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP',
                               'callback' : function(){
-                                var token = grecaptcha.getResponse(widgetId2);
-                                verifyNumberOrEmail(self.widgetId2);
+                                var token = grecaptcha.getResponse(self.pageTrackWidgetId);
+                                verifyNumberOrEmail(token);
                               },
                             });
                             }catch(error){}
