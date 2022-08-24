@@ -1992,10 +1992,8 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                          var widgetId2 = grecaptcha.render(document.querySelector(".captcha-wrap"), {
                           'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP',
                           'callback' : function(){
-                            grecaptcha.execute('6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP').then(function(token) {
-                              console.log('token=',token);
-                            });
-                            // $btn.trigger("click");
+                            grecaptcha.execute();
+                            $btn.trigger("click");
                           },
                         });
                       }else{
