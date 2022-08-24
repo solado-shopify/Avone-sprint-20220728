@@ -1989,7 +1989,6 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                       if(data.responseJSON.error.message=='captcha_show'){
                         $("#tracktorResponseContainer").html("");
                         $(".captcha-wrap").css({"display":"flex"});
-                        $(".captcha-wrap").html('');
                          var widgetId2 = grecaptcha.render(document.querySelector(".captcha-wrap"), {
                           'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP',
                           'callback' : function(){
