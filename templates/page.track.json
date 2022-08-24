@@ -1,13 +1,8 @@
 {
   "sections": {
     "page": {
-      "type": "page-template",
+      "type": "page-track",
       "settings": {
-        "section_width": false,
-        "width": 1200,
-        "hide_ttl": true,
-        "hide_hdft": false,
-        "breadcrumb": false
       }
     }
   },
