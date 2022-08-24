@@ -1962,6 +1962,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
            $("#tracktorContainer").submit(function(event){
       event.preventDefault();
    });
+           var self = this;
             var verifyNumberOrEmail = function(recaptcha_token){ 
                 var order = $("#tracktorOrderName").val(); 
                 var email = $("#tracktorOrderEmail").val(); 
@@ -1990,14 +1991,19 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                         $("#tracktorResponseContainer").html("");
                         $(".captcha-wrap").css({"display":"flex"});
                         try{
-                         var widgetId2 = grecaptcha.render(document.querySelector(".captcha-wrap"), {
-                          'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP',
-                          'callback' : function(){
-                            var token = grecaptcha.getResponse(widgetId2);
-                            verifyNumberOrEmail(token);
-                          },
-                        });
-                        }catch(error){}
+                          if(self.widgetId2){
+                            grecaptcha.reset(self.widgetId2)
+                          }else{
+                               var self.widgetId2 = grecaptcha.render(document.querySelector(".captcha-wrap"), {
+                              'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP',
+                              'callback' : function(){
+                                var token = grecaptcha.getResponse(widgetId2);
+                                verifyNumberOrEmail(self.widgetId2);
+                              },
+                            });
+                            }catch(error){}
+                          }
+                         
                       }else{
                         $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive"> <h1>'+data.responseJSON.error.message+'</h1></section>');
                       }
