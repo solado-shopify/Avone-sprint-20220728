@@ -1968,6 +1968,9 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                 if(order!=='' && email!==''){
                   console.log('提交');
                   var testUrl = "/apps/tracktor/order.json?order="+encodeURIComponent(order)+"&email="+email+"&uuid=solado-official&time="+new Date().getTime();
+                  if(recaptcha_token){
+                    testUrl +=recaptcha_token;
+                  }
                   $.ajax({
                    type: "GET",
                    url: testUrl,
