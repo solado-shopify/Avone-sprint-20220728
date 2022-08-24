@@ -46,7 +46,7 @@
       <div class="field"><label for="tracktorOrderEmail"><span>Email</span></label><input required="" aria-required="true" id="tracktorOrderEmail" type="text" name="userEmail"></div>
       <button id="tracktorTrack" class="button-enter btn styled-submit button"><span>Track</span></button>
   </div>
-  <section id="tracktorResponseContainer"><section id="tracktorOrderDetails" class="header-inactive" style="display:none;"><h1>Could not find order</h1></section></section>
+  <section id="tracktorResponseContainer"><section id="tracktorOrderDetails" class="header-inactive"<h1>Could not find order</h1></section></section>
 </div>
 <script type="text/javascript">
          window.addEventListener('DOMContentLoaded',function(){
@@ -63,7 +63,7 @@
                    type: "GET",
                    url: testUrl,
                     beforeSend:function(){
-                      $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive" style="display:none;"> <span id="tracktorLoader" class="tracktorLoader"><span id="tracktorLoader1"><span>Tracking Packages</span></span></span></section>');
+                      $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive"> <span id="tracktorLoader" class="tracktorLoader"><span id="tracktorLoader1"><span>Tracking Packages</span></span></span></section>');
                     },
                    success: function(data){
                       if(data.status===200){
@@ -72,11 +72,11 @@
                           var jumpUrl = "/apps/tracktor/track?order="+orderEncode+"&token="+emailEncode;
                           location.href =jumpUrl;
                       }else{
-                       $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive" style="display:none;"> <h1>'+data.error.message+'</h1></section>');
+                       $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive"> <h1>'+data.error.message+'</h1></section>');
                       }
                    },
                     error:function(){
-                      $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive" style="display:none;"> <h1>1232</h1></section>');
+                      $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive"> <h1>1232</h1></section>');
                     }
                   });
                 }
