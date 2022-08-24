@@ -62,7 +62,7 @@
                    url: testUrl,
                     beforeSend:function(){
                       $("#tracktorResponseContainer").html('<section id="tracktorOrderDetails" class="header-inactive" style="display:none;"> <span id="tracktorLoader" class="tracktorLoader"><span id="tracktorLoader1"><span>Tracking Packages</span></span></span></section>');
-                    }
+                    },
                    success: function(data){
                       if(data.status===200){
                           var orderEncode = encodeURIComponent(order);
