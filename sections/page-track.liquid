@@ -1994,7 +1994,7 @@ a.mapboxgl-ctrl-logo.mapboxgl-compact {
                           if(self.widgetId2){
                             grecaptcha.getResponse(self.widgetId2)
                           }else{
-                               var self.widgetId2 = grecaptcha.render(document.querySelector(".captcha-wrap"), {
+                               self.widgetId2 = grecaptcha.render(document.querySelector(".captcha-wrap"), {
                               'sitekey' : '6LcyJXkUAAAAALevJX2VHcBfFfUWb8q4wI1-xAXP',
                               'callback' : function(){
                                 var token = grecaptcha.getResponse(widgetId2);
